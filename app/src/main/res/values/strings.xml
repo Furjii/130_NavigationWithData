@@ -14,8 +14,8 @@
     <string name="quantity">Jumlah</string>
     <string name="flavor">Rasa</string>
     <string name="subtotal_price">Subtotal : Rp %s</string>
-    <string name="nama">Nama pelanggan</string>
-    <string name="nomorp">Nomor Telfon</string>
+    <string name="nama_p">Nama pelanggan</string>
+    <string name="nomor_p">Nomor Telfon</string>
     <string name="alamat">Alamat</string>
 
 
