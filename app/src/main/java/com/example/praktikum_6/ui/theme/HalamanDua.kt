@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
@@ -17,12 +16,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import com.example.praktikum_6.R
+import com.example.praktikum_6.data.FormState
 import com.example.praktikum_6.data.OrderUIState
+import com.example.praktikum_6.ui.komponen.FormatDataPemesanan
 import com.example.praktikum_6.ui.komponen.FormatLabelHarga
+
 
 @Composable
 fun HalamanDua(
+    formState: FormState,
     orderUIState: OrderUIState,
     onCancelButtonClicked: () -> Unit,
     //onSendbuttonClicked: (String, String) -> Unit,
@@ -32,12 +36,6 @@ fun HalamanDua(
         Pair(stringResource(R.string.quantity), orderUIState.jumlah),
         Pair(stringResource(R.string.flavor), orderUIState.rasa)
     )
-    val contact = listOf(
-        Pair(stringResource(id = R.string.nama_p), orderUIState.nama),
-        Pair(stringResource(id = R.string.nomor_p), orderUIState.telp),
-        Pair(stringResource(id = R.string.alamat), orderUIState.alamat),
-
-        )
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.SpaceBetween
@@ -46,13 +44,12 @@ fun HalamanDua(
             modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
             Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
         ) {
-            contact.forEach { item ->
-                Column {
-                    Text(item.first, fontWeight = FontWeight.Bold)
-                    Text(text = item.second)
-                }
-                Divider(thickness = dimensionResource(R.dimen.thickness_divider))
-            }
+            FormatDataPemesanan(
+                namaPemesanan = formState.nama,
+                alamatPemesan = formState.alamat,
+                phonePemesan = formState.phone
+            )
+            Spacer(modifier = Modifier.padding(8.dp))
             items.forEach { item ->
                 Column {
                     Text(item.first.uppercase())
@@ -63,7 +60,7 @@ fun HalamanDua(
                 }
                 Divider(thickness = dimensionResource(R.dimen.thickness_divider))
             }
-            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
+            Spacer(modifier = Modifier.padding(8.dp))
             FormatLabelHarga(
                 subtotal = orderUIState.harga,
                 modifier = Modifier.align(Alignment.End)
