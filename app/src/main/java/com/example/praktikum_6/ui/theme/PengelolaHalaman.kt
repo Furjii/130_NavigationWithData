@@ -26,7 +26,7 @@ import com.example.praktikum_6.R
 import com.example.praktikum_6.data.SumberData.flavors
 
 enum class PengelolaHalaman {
-    Home, Rasa, Summary
+    Home, Rasa, Summary,
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -78,6 +78,7 @@ fun EsJumboApp(
                 })
 
             }
+
             composable(route = PengelolaHalaman.Rasa.name) {
                 val context = LocalContext.current
                 HalamanSatu(pilihanRasa = flavors.map { id -> context.resources.getString(id) },
