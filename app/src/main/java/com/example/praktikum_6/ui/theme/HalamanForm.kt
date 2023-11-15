@@ -39,5 +39,8 @@ fun HalamanForm(
             Text(text = stringResource(id = R.string.nomor_p))
 
         })
+        OutlinedTextField(value = alamatTxt, onValueChange = { alamatTxt = it }, label = {
+            Text(text = stringResource(id = R.string.alamat))
+        })
     }
 }
