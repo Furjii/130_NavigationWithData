@@ -32,8 +32,12 @@ fun HalamanForm(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier.fillMaxSize()
     ) {
-        OutlinedTextField(value = namaTxt, onValueChange = {namaTxt = it}, label = {
+        OutlinedTextField(value = namaTxt, onValueChange = { namaTxt = it }, label = {
             Text(text = stringResource(id = R.string.nama_p))
-        } )
+        })
+        OutlinedTextField(value = tlpnTxt, onValueChange = { tlpnTxt = it }, label = {
+            Text(text = stringResource(id = R.string.nomor_p))
+
+        })
     }
 }
