@@ -26,7 +26,7 @@ import com.example.praktikum_6.R
 import com.example.praktikum_6.data.SumberData.flavors
 
 enum class PengelolaHalaman {
-    Home, Rasa, Summary,
+    Home, Rasa, Summary, Contacs
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -63,7 +63,7 @@ fun EsJumboApp(
 ) {
     Scaffold(topBar = {
         EsJumboAppBar(bisaNavigasiBack = false, navigasiUp = {
-            /*TODO*/
+
         })
     }) { innerPadding ->
         val uiState by viewModel.stateUI.collectAsState()
@@ -77,6 +77,12 @@ fun EsJumboApp(
                     navController.navigate(PengelolaHalaman.Rasa.name)
                 })
 
+            }
+            composable(route = PengelolaHalaman.Contacs.name) {
+                HalamanForm(onSubmitButtonClicked = {
+                    viewModel.setContact(it)
+                    navController.navigate(PengelolaHalaman.Rasa.name)
+                })
             }
 
             composable(route = PengelolaHalaman.Rasa.name) {

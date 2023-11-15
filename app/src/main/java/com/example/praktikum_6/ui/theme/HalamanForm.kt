@@ -24,6 +24,7 @@ import com.example.praktikum_6.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HalamanForm(
+    onSubmitButtonClicked:(MutableList<String>) -> Unit
 ) {
     var namaTxt by remember { mutableStateOf("") }
     var alamatTxt by remember { mutableStateOf("") }
