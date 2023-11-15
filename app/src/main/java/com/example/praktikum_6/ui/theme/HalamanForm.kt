@@ -3,6 +3,9 @@ package com.example.praktikum_6.ui.theme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -10,8 +13,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.example.praktikum_6.R
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HalamanForm(
 ) {
@@ -26,5 +32,8 @@ fun HalamanForm(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier.fillMaxSize()
     ) {
+        OutlinedTextField(value = namaTxt, onValueChange = {namaTxt = it}, label = {
+            Text(text = stringResource(id = R.string.nama_p))
+        } )
     }
 }
